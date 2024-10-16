@@ -1,0 +1,26 @@
+<div class="container mx-auto">
+    <h1 class="font-bold text-gray-800 mb-6 text-4xl">Library</h1>
+    <table class="w-full">
+        <thead class="bg-slate-500">
+            <th>Title</th><th>Author</th><th>Read (y/n)</th>
+        </thead>
+        <tbody class="bg-gray-300">
+            @for (book of books; track book;) {
+                <tr class="text-center">
+                    <td>{{ book.title }}</td><td>{{ book.author }}</td>
+                    <td>
+                        <button (click)="toggleRead(book)" class="p-1">{{book.isRead | booleanemoji}}</button>
+                    </td>
+                </tr>
+            } @empty {
+                <tr>
+                    <td colspan="3">List empty</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    <ul>
+    </ul>
+    
+</div>
