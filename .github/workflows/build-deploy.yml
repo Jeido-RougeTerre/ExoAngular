@@ -9,15 +9,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: All things angular
-      uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.4.0
-      with:
-        github_access_token: ${{ secrets.GH_TOKEN }}
-        build_configuration: staging 
-        base_href: https://jeido-rougeterre.github.io/ExoAngular/
-        deploy_branch: gh-pages 
-        angular_dist_build_folder: dist/exercice
+    - uses: actions/checkout@v4
+
+    - name: install dependencies
+      run: npm i angular-cli-ghpages --save-dev
+
+    - name: build
+      run: ng build --base-href "https://Jeido-RougeTerre.github.io/ExoAngular/"
+    - name: deploy
+      run: npx angular-cli-ghpages --dir=dist/exercice
 
 permissions:
   contents: write 
