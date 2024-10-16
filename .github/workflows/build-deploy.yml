@@ -10,9 +10,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: install
-      run: npm install
-    - name: install dependencies
-      run : npm i angular-cli-ghpages --save-dev
-    - name: update gh-pages
-      run: npm run update-gh-pages
+    - name: angular process
+      uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.4.0
+      with:
+        github_access_token: ${{ secrets.GH_TOKEN }}
+        build_configuration: production
+        base_href: /ExoAngular/
+        angular_dist_build_folder: dist/exercice/browser
+
+permissions:
+  contents: write 
