@@ -12,5 +12,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: install
       run: npm install
-    - name: updte gh-pages
+    - name: install dependencies
+      run : npm i angular-cli-ghpages --save-dev
+    - name: update gh-pages
       run: npm run update-gh-pages
