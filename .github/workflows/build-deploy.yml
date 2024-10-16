@@ -10,17 +10,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-
-    - name: pre-install
-      run: npm install
-
-    - name: install dependencies
-      run: npm i angular-cli-ghpages --save-dev
-
-    - name: build
-      run: ng build --base-href "/ExoAngular/"
-    - name: deploy
-      run: npx angular-cli-ghpages --dir=dist/exercice/browser
+    - name: angular process
+      uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.4.0
+      with:
+        github_access_token: ${{ secrets.GH_TOKEN }}
+        build_configuration: staging
+        base_href: /ExoAngular/
+        angular_dist_build_folder: dist/exercice
 
 permissions:
   contents: write 
