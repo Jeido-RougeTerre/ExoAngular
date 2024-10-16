@@ -21,3 +21,6 @@ li a:hover {
     background-color: chocolate;
 }
 
+nav {
+    margin-bottom: 5px;
+}

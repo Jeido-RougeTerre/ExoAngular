@@ -1,1 +1,11 @@
 <h1>Series</h1>
+<ul>
+    @for (serie of series; track serie; let i = $index) {
+        <li>
+            <span>{{ serie }}</span>
+            <button (click)="removeSerie(i)">Supprimer</button>
+        </li>
+    } @empty {
+        <p>La liste est vide</p>
+    }
+</ul>
