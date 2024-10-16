@@ -2,6 +2,7 @@
   "name": "exercice",
   "version": "0.0.0",
   "scripts": {
+    "update-gh-pages": "ng build --base-href \"/ExoAngular/\" && npx angular-cli-ghpages --dir=dist/exercice/browser",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
