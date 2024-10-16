@@ -20,7 +20,27 @@
 
         </tbody>
     </table>
-    <ul>
-    </ul>
+    <div class="bg-slate-400 w-1/4">
+        <h2 class="font-bold text-gray-800 mt-6 text-xl">Add a Book</h2>
+        <form (ngSubmit)="submitBook()">
+            <div class="flex flex-col mb-2 bg-slate-200">
+                <label for="title" class="mx-3">Title</label>
+                <input class="outline outline-1 outline-black" type="text" id="title" name="title" [(ngModel)]="book.title">
+                @if (titleHasError) {
+                    <p class="text-red-500 bg-red-200">invalid title</p>
+                }
+            </div>
+            <div class="flex flex-col mb-2 bg-slate-200">
+                <label for="author" class="mx-3">Author</label>
+                <input class="outline outline-1 outline-black" type="text" id="author" name="author" [(ngModel)]="book.author">
+                @if (authorHasError) {
+                    <p class="text-red-500 bg-red-200">invalid author</p>
+                }
+            </div>
+            <div class="flex flex-col">
+                <button class="rounded bg-slate-300 p-1 m-1">Add Book</button>
+            </div>
+        </form>
+    </div>
     
 </div>
