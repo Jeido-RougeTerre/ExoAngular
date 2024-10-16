@@ -11,6 +11,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: pre-install
+      run: npm install
+
     - name: install dependencies
       run: npm i angular-cli-ghpages --save-dev
 
