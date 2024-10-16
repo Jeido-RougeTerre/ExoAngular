@@ -1,6 +1,8 @@
 <h1>Series</h1>
+<button (click)="changeOrder('asc')">ASC ↑</button>
+<button (click)="changeOrder('desc')">DESC ↓</button>
 <ul>
-    @for (serie of series; track serie; let i = $index) {
+    @for (serie of series | orderedtable : order ; track serie; let i = $index) {
         <li>
             <span>{{ serie }}</span>
             <button (click)="removeSerie(i)">Supprimer</button>
