@@ -1,13 +1,18 @@
-<h1>Series</h1>
-<button (click)="changeOrder('asc')">ASC ↑</button>
-<button (click)="changeOrder('desc')">DESC ↓</button>
-<ul>
-    @for (serie of series | orderedtable : order ; track serie; let i = $index) {
-        <li>
-            <span>{{ serie }}</span>
-            <button (click)="removeSerie(i)">Supprimer</button>
-        </li>
-    } @empty {
-        <p>La liste est vide</p>
-    }
-</ul>
+<div class="container mx-auto">
+    <h1 class="font-bold text-gray-800 mb-6 text-4xl">Series</h1>
+
+    <button (click)="changeOrder('asc')" class="bg-gray-400 mb-2 rounded p-1 mx-0.5">ASC ↑</button>
+    <button (click)="changeOrder('desc')" class="bg-gray-400 mb-2 rounded p-1 mx-0.5">DESC ↓</button>
+
+    <ul>
+        @for (serie of series | orderedtable : order ; track serie; let i = $index) {
+            <li class="flex justify-between items-center p-2 bg-gray-300 mb-2">
+                <span>{{ serie }}</span>
+                <button (click)="removeSerie(i)" class="bg-red-700 text-white rounded-lg p-1">Supprimer</button>
+            </li>
+        } @empty {
+            <p>La liste est vide</p>
+        }
+    </ul>
+    
+</div>
