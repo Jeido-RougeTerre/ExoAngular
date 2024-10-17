@@ -1,0 +1,54 @@
+<h1>Make a pokemon !</h1>
+<form [formGroup]="pokemon_form" (ngSubmit)="submitPokemon()" class="bg-slate-200 p-4 rounded-xl mb-20 mx-10">
+    <div>
+        <label for="nom" class="block">Name</label>
+        <input type="text" id="nom" formControlName="nom" class="mt-1 block w-full px-4 py-2 border border-slate-300 rounded-md">
+    </div>
+    <div>
+        <label for="desc" class="block">Description</label>
+        <textarea type="text" formControlName="desc" id="desc" class="mt-1 block w-full px-4 py-2 border border-slate-300 rounded-md"></textarea>
+    </div>
+    <div>
+        <label for="type" class="block">Types</label>
+        <select name="type" id="type" multiple formControlName="types" class="mt-1 block w-full px-4 border border-slate-300 rounded-md">
+            @for (type of types; track type) {
+                <option [value]="type">{{type}}</option>
+            }
+        </select>
+    </div>
+    <fieldset formGroupName="attacks">
+        <legend class="block">Attacks</legend>
+        @for (c of attacks.controls; track c; let i = $index) {
+            <fieldset [formGroupName]="i">
+                <legend class="block text-sm">Attack#{{i + 1}}</legend>
+                <div>
+                    <label [for]="'nom' + i" class="block text-xs">Name</label>
+                    <input type="text" [id]="'nom' + i" formControlName="nom" class="mt-1 block w-full px-4 py-2 border border-slate-300 rounded-md">
+                </div>
+                <div>
+                    <label [for]="'desc' + i" class="block text-xs">Description</label>
+                    <textarea type="text" [id]="'desc' + i" formControlName="desc" class="mt-1 block w-full px-4 py-2 border border-slate-300 rounded-md"></textarea>
+                </div>
+                <div>
+                    <label [for]="'dmg' + i" class="block text-xs">Damage</label>
+                    <input type="number" [id]="'dmg' + i" formControlName="dmg" class="mt-1 block w-full px-4 py-2 border border-slate-300 rounded-md">
+                </div>
+            </fieldset>
+        }
+        @if (canAddAttack()) {
+            <button type="button" (click)="addAttack()">+</button>
+        }
+    </fieldset>
+    <fieldset formGroupName="zone">
+        <legend class="block">Spawning Zone</legend>
+        <div>
+            <label for="nom" class="block text-sm">Name</label>
+            <input type="text" id="nom" formControlName="nom" class="mt-1 block w-full px-4 py-2 border border-slate-300 rounded-md">
+        </div>
+        <div>
+            <label for="region" class="block text-sm">Region</label>
+            <input type="text" id="region" formControlName="region" class="mt-1 block w-full px-4 py-2 border border-slate-300 rounded-md">
+        </div>
+    </fieldset>
+    <button>Make</button>
+</form>
